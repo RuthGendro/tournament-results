@@ -1,12 +1,20 @@
 #
 # Database access functions for the web forum.
-# 
+#
 
-import psychopg2
+import psycopg2
+
+import bleach
+
+bleach.clean('an <script>evil()</script> example')
+u'an &lt;script&gt;evil()&lt;/script&gt; example'
+
+bleach.linkify('an http://example.com url')
+u'an <a href="http://example.com" rel="nofollow">http://example.com</a> url
 
 ## Get posts from database.
 def GetAllPosts():
-    DB = psychopg2.connect("dbname=forum")
+    DB = psycopg2.connect("dbname=forum")
     c = DB.cursor()
     c.execute("SELECT time, content FROM posts ORDER BY time DESC")
     posts = ({'content': str(row[1]), 'time': str(row[0])}
@@ -16,7 +24,7 @@ def GetAllPosts():
 
 ## Add a post to the database.
 def AddPost(content):
-    DB = psychopg2.connect("dbname=forum")
+    DB = psycopg2.connect("dbname=forum")
     c = DB.cursor()
     c.execute("INSERT INTO posts (content) VALUES (%s)", 
               (content,))
