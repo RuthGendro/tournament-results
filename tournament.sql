@@ -39,3 +39,9 @@ ON players.id = games.ID_winner
 group by players.id
 order by times DESC;
 
+create view standings as
+select players_wins.ID as ID, name, players_wins.times as wins,  players_loses.times+ players_wins.times as matches 
+from players, players_loses,  players_wins
+where players.ID = players_wins.ID and players_loses.ID = players_wins.ID 
+order by wins DESC;
+
