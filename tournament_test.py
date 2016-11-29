@@ -83,10 +83,6 @@ def testStandingsBeforeMatches():
     print "6. Newly registered players appear in the standings with no matches."
 
 def testReportMatches():
-    """
-    Test that matches are reported properly.
-    Test to confirm matches are deleted properly.
-    """
     deleteMatches()
     deletePlayers()
     registerPlayer("Bruno Walton")
@@ -106,16 +102,7 @@ def testReportMatches():
         elif i in (id2, id4) and w != 0:
             raise ValueError("Each match loser should have zero wins recorded.")
     print "7. After a match, players have updated standings."
-    deleteMatches()
-    standings = playerStandings()
-    if len(standings) != 4:
-        raise ValueError("Match deletion should not change number of players in standings.")
-    for (i, n, w, m) in standings:
-        if m != 0:
-            raise ValueError("After deleting matches, players should have zero matches recorded.")
-        if w != 0:
-            raise ValueError("After deleting matches, players should have zero wins recorded.")
-    print "8. After match deletion, player standings are properly reset.\n9. Matches are properly deleted."
+
 
 def testPairings():
     """
