@@ -4,7 +4,6 @@
 
 from tournament import *
 
-
 def testDeleteMatches():
     deleteMatches()
     print "1. Old matches can be deleted."
@@ -37,6 +36,7 @@ def testRegister():
         raise ValueError(
             "After one player registers, countPlayers() should be 1.")
     print "4. After registering a player, countPlayers() returns 1."
+
 
 def testRegisterCountDelete():
     deleteMatches()
@@ -77,6 +77,7 @@ def testStandingsBeforeMatches():
         raise ValueError("Registered players' names should appear in standings, "
                          "even if they have no matches played.")
     print "6. Newly registered players appear in the standings with no matches."
+
 
 def testReportMatches():
     deleteMatches()
@@ -123,8 +124,13 @@ def testPairings():
             "After one match, players with one win should be paired.")
     print "8. After one match, players with one win are paired."
 
+
 if __name__ == '__main__':
+    testDeleteMatches()
+    testDelete()
     testCount()
+    testRegister()
+    testRegisterCountDelete()
     testStandingsBeforeMatches()
     testReportMatches()
     testPairings()
