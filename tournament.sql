@@ -12,3 +12,9 @@ DROP VIEW IF EXISTS players_loses;
 DROP TABLE IF EXISTS games;
 DROP TABLE IF EXISTS players;
 
+create table players(
+	name text,
+	ID serial,
+	primary key (ID)
+);
+
