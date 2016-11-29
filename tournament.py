@@ -22,6 +22,11 @@ def deleteMatches():
 
 def deletePlayers():
     """Remove all the player records from the database."""
+    DB = connect()
+    curs = DB.cursor()
+    curs.execute("delete from players;")
+    DB.commit()
+    DB.close()
 
 
 def countPlayers():
@@ -30,10 +35,10 @@ def countPlayers():
 
 def registerPlayer(name):
     """Adds a player to the tournament database.
-  
+
     The database assigns a unique serial id number for the player.  (This
     should be handled by your SQL database schema, not in your Python code.)
-  
+
     Args:
       name: the player's full name (need not be unique).
     """
