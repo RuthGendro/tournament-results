@@ -25,3 +25,10 @@ create table games(
 	primary key (match_ID)
 );
 
+create view players_loses as
+select players.id as ID, COALESCE(count(ID_loser),0) as times
+from players LEFT JOIN games
+ON players.id = games.ID_loser
+group by players.id
+order by times DESC;
+
