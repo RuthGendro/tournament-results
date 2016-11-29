@@ -18,3 +18,10 @@ create table players(
 	primary key (ID)
 );
 
+create table games(
+	ID_winner serial references players (ID),
+	ID_loser serial references players (ID),
+	match_ID serial,
+	primary key (match_ID)
+);
+
