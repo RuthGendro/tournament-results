@@ -6,11 +6,9 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
-DROP VIEW IF EXISTS standings;
-DROP VIEW IF EXISTS players_wins;
-DROP VIEW IF EXISTS players_loses;
-DROP TABLE IF EXISTS games;
-DROP TABLE IF EXISTS players;
+DROP DATABASE IF EXISTS tournament;
+CREATE DATABASE tournament;
+\c tournament;
 
 create table players(
 	name text,
