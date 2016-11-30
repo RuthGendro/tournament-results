@@ -11,16 +11,14 @@ CREATE DATABASE tournament;
 \c tournament;
 
 create table players(
-	name text,
-	ID serial,
-	primary key (ID)
+    id serial primary key
+	name text
 );
 
 create table games(
-	ID_winner serial references players (ID),
-	ID_loser serial references players (ID),
-	match_ID serial,
-	primary key (match_ID)
+	ID_winner integer REFERENCES players,
+    ID_loser integer REFERENCES players,
+    tie boolean
 );
 
 create view players_loses as
